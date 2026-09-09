@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>Lysi Dev — Notion</title>
+  <style>
+    :root { color-scheme: light dark; }
+    body {
+      font-family: ui-sans-serif, system-ui, -apple-system, sans-serif;
+      max-width: 28rem;
+      margin: 3rem auto;
+      padding: 0 1.25rem;
+      line-height: 1.45;
+    }
+    a { color: inherit; }
+  </style>
+</head>
+<body>
+  <h1>Lysi Dev</h1>
+  <p id="status">Ouverture de Lysi Dev…</p>
+  <p id="fallback" hidden><a id="open" href="#">Ouvrir Lysi Dev</a></p>
+  <script>
+    (function () {
+      var params = window.location.search || "";
+      var query = new URLSearchParams(params);
+      var error = query.get("error");
+      var appURL = "dumpit-dev://notion-oauth" + params;
+      var status = document.getElementById("status");
+      var fallback = document.getElementById("fallback");
+      var open = document.getElementById("open");
+      open.href = appURL;
+
+      if (error) {
+        status.textContent = "La connexion Notion a été refusée ou a échoué. Vous pouvez fermer cette page.";
+        open.textContent = "Fermer";
+        open.href = "javascript:window.close()";
+        fallback.hidden = false;
+        return;
+      }
+
+      fallback.hidden = false;
+      window.location.replace(appURL);
+    })();
+  </script>
+</body>
+</html>
