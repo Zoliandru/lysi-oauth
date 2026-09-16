@@ -44,3 +44,16 @@ Si le compte GitHub n’est pas `Zoliandru`, l’URL devient `https://<user>.git
 - Pas de `client_secret` ici (l’échange de jeton reste dans l’app).
 - Pas d’Universal Links.
 - Pas de code DumpIt / Lysi.
+
+## Lysi Hub — privacy / support (2026-09-16)
+
+Pages légales soft launch (repo app privée = pas de Pages) :
+
+| URL | Fichier |
+| --- | --- |
+| https://zoliandru.github.io/lysi-oauth/lysi.html | Accueil Lysi Hub |
+| https://zoliandru.github.io/lysi-oauth/privacy.html | Confidentialité |
+| https://zoliandru.github.io/lysi-oauth/support.html | Support (e-mail D5 à venir) |
+| https://zoliandru.github.io/lysi-oauth/terms.html | Conditions |
+
+Source miroir : `dumpit-ios` → `docs/ship/site/` (adapter `<base href>`).
