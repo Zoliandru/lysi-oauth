@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="noindex">
-  <title>Tetis — GitHub</title>
+  <title>Tetis Dev — GitHub</title>
   <style>
     :root { color-scheme: light dark; }
     body {
@@ -18,15 +18,15 @@
   </style>
 </head>
 <body>
-  <h1>Tetis</h1>
-  <p id="status">Ouverture de Tetis…</p>
-  <p id="fallback" hidden><a id="open" href="#">Ouvrir Tetis</a></p>
+  <h1>Tetis Dev</h1>
+  <p id="status">Ouverture de Tetis Dev…</p>
+  <p id="fallback" hidden><a id="open" href="#">Ouvrir Tetis Dev</a></p>
   <script>
     (function () {
       var params = window.location.search || "";
       var query = new URLSearchParams(params);
       var error = query.get("error");
-      var appURL = "dumpit://github-oauth" + params;
+      var appURL = "dumpit-dev://github-oauth" + params;
       var status = document.getElementById("status");
       var fallback = document.getElementById("fallback");
       var open = document.getElementById("open");

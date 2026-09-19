@@ -1,59 +1,48 @@
-# lysi-oauth — pont HTTPS Notion → Lysi
+# tetis-oauth — pages publiques Tetis (GitHub Pages)
 
-Page statique **publique** pour le redirect OAuth Notion. Aucun secret, aucun cookie, aucune analytics.
-
-Notion n’accepte que des redirect `https`. Lysi écoute `dumpit://notion-oauth` (et `dumpit-dev://` pour Dev). Cette page fait le hop.
+Repo **public** : pont HTTPS OAuth (Notion / GitHub) + pages légales (confidentialité, support, conditions). Aucun secret, aucun cookie, aucune analytics.
 
 L’app iOS reste privée : [`Zoliandru/dumpit-ios`](https://github.com/Zoliandru/dumpit-ios).
 
-## URLs à coller chez Notion
+Ancien nom : `lysi-oauth`. Les URL `zoliandru.github.io/lysi-oauth/…` ne sont plus valides.
 
-Après activation de GitHub Pages :
+## Pages légales
 
 ```
-https://zoliandru.github.io/lysi-oauth/notion-oauth.html
-https://zoliandru.github.io/lysi-oauth/notion-oauth-dev.html
+https://zoliandru.github.io/tetis-oauth/
+https://zoliandru.github.io/tetis-oauth/privacy.html
+https://zoliandru.github.io/tetis-oauth/support.html
+https://zoliandru.github.io/tetis-oauth/terms.html
+```
+
+Contact : `tetis.app@icloud.com`
+
+## Pont OAuth
+
+Notion et GitHub n’acceptent que des redirect `https`. Tetis écoute `dumpit://notion-oauth` / `dumpit://github-oauth` (et `dumpit-dev://` pour Dev). Ces pages font le hop.
+
+```
+https://zoliandru.github.io/tetis-oauth/notion-oauth.html
+https://zoliandru.github.io/tetis-oauth/notion-oauth-dev.html
+https://zoliandru.github.io/tetis-oauth/github-oauth.html
+https://zoliandru.github.io/tetis-oauth/github-oauth-dev.html
 ```
 
 | Fichier | Ouvre |
 | --- | --- |
-| `notion-oauth.html` | `dumpit://notion-oauth?…` (Lysi) |
-| `notion-oauth-dev.html` | `dumpit-dev://notion-oauth?…` (Lysi Dev) |
+| `notion-oauth.html` | `dumpit://notion-oauth?…` |
+| `notion-oauth-dev.html` | `dumpit-dev://notion-oauth?…` |
+| `github-oauth.html` | `dumpit://github-oauth?…` |
+| `github-oauth-dev.html` | `dumpit-dev://github-oauth?…` |
 
 Query `code`, `state` (et `error`) sont recopiées telles quelles.
 
-## Activer GitHub Pages
+## Chez Notion / GitHub
 
-1. Ce repo doit rester **public**.
-2. GitHub → **Settings** → **Pages**.
-3. **Build and deployment** → Source = **Deploy from a branch**.
-4. Branch = `main`, dossier = `/` (root). Save.
-5. Attendre 1–2 min. Vérifier les 2 URLs ci-dessus (sans query : message « Ouverture… » + lien).
-
-Si le compte GitHub n’est pas `Zoliandru`, l’URL devient `https://<user>.github.io/lysi-oauth/…`. Coller alors ces URLs dans Notion **et** dans `Config/NotionOAuth.xcconfig` de dumpit-ios.
-
-## Checklist fondateur
-
-1. Pousser ce repo, activer Pages, noter les 2 URLs https.
-2. Notion → intégration **Public** → Redirect URIs = ces 2 https **exactes**. Supprimer `dumpit://` et `https://notion-oauth`.
-3. Dans dumpit-ios : `Config/NotionOAuth.xcconfig` (gitignoré) = `client_id`, `client_secret`, et les redirect https seulement si le host Pages n’est pas `zoliandru.github.io`.
-4. Xcode : Use Version on Disk → Clean → Run → Identifiants → **Connecter avec Notion** → autoriser → retour Lysi → bases listées.
+Redirect / callback = les 4 URL https **exactes** ci-dessus. Pas de `dumpit://` dans les portails.
 
 ## Hors périmètre
 
 - Pas de `client_secret` ici (l’échange de jeton reste dans l’app).
 - Pas d’Universal Links.
-- Pas de code DumpIt / Lysi.
-
-## Lysi Hub — privacy / support (2026-09-16)
-
-Pages légales soft launch (repo app privée = pas de Pages) :
-
-| URL | Fichier |
-| --- | --- |
-| https://zoliandru.github.io/lysi-oauth/lysi.html | Accueil Lysi Hub |
-| https://zoliandru.github.io/lysi-oauth/privacy.html | Confidentialité |
-| https://zoliandru.github.io/lysi-oauth/support.html | Support (e-mail D5 à venir) |
-| https://zoliandru.github.io/lysi-oauth/terms.html | Conditions |
-
-Source miroir : `dumpit-ios` → `docs/ship/site/` (adapter `<base href>`).
+- Pas de code DumpIt / Tetis iOS.
